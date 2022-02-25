@@ -1,0 +1,41 @@
+Bootstrap v5.1.3
+Copyright 2011-2021 The Bootstrap Authors
+Licensed under MIT
+
+spring-boot
+Copyright (c) 2022 VMware, Inc. or its affiliates.
+Apache License 2.0
+
+spring-security
+Copyright (c) 2022 VMware, Inc. or its affiliates.
+Apache License 2.0
+
+MyBatis
+Copyright © 2009–2021 MyBatis.org.
+Apache License 2.0
+
+Gson
+Copyright (c) 2002 JSON.org.
+Apache License 2.0
+
+lombok
+Copyright (C) 2009-2021 The Project Lombok Authors.
+MIT license
+
+mariadb
+Copyright @ 2009 - 2022 MariaDB Foundation.
+GNU LESSER GENERAL PUBLIC LICENSE
+
+commons-io
+Copyright © 2002-2021 The Apache Software Foundation.
+Apache License 2.0
+
+How Secure Is My Password?
+Copyright (c) 2015, Mark Nicholas Wales / Small Hadron Collider
+The MIT License (MIT)
+
+"VRChat" and the VRChat logo are registered trademarks of VRChat Incorporated in the United States.
+"VRChat"과 "VRChat" 로고는 VRChat사의 등록 상표입니다.
+
+"T'Friends" is third-party website to VRChat, not operated by them.
+"T'Friends"는 VRChat의 서드파티 사이트이며, 해당 사(社)에서 운영하는 사이트가 아닙니다.
