@@ -39,7 +39,13 @@
     margin-right: 15px;
 }
 
-@media (max-width: 991px) and (orientation: landscape) {
+.nav-head {
+    position: fixed;
+    width: 100%;
+    top: 0px;
+}
+
+@media (max-width: 991px) {
 	.navbar-brand {
 		padding-top: 0px;
 	}
@@ -67,39 +73,5 @@
     .dropdown-profile {
         width: 100%;
         margin-left: 0px;
-    }
-}
-
-@media (max-width: 991px) and (orientation: portrait) {
-	html {
-	    -webkit-text-size-adjust: 200%;
-	}
-	
-    .dropdown-profile {
-        width: 100%;
-        margin-left: 0px;
-    }
-	
-    .ctc {
-        height: 90px;
-    }
-
-    .ctc > a {
-        width: 80px;
-        height: 80px;
-        background-color: #f3e6ff;
-        display: inline-block;
-        border-radius: 50%;
-    }
-
-    .ctc > a:hover {
-        background-color: #420080;
-        display: inline-block;
-        border-radius: 50%;
-    }
-
-    .ctcig {
-        width: 80px;
-        height: 80px;
     }
 }
