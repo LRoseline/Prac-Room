@@ -20,6 +20,7 @@
 
 .tablefix {
 	table-layout: fixed;
+	width: 100%;
 }
 
 .tablefix td {
