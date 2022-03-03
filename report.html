@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <title>게시글 신고</title>
+    <link href="/css/report.css" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.8.1/font/bootstrap-icons.css">
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css">
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js"></script>
+</head>
+<body>
+    <form>
+        <div>
+            신고 접수
+        </div>
+        <div class="form-check">
+            <input class="form-check-input" type="checkbox" value="porn" name="reason" id="porn">
+            <label class="form-check-label" for="porn">음란성</label><br>
+            <input class="form-check-input" type="checkbox" value="porn" name="reason" id="bulling">
+            <label class="form-check-label" for="bulling">사이버폭력</label><br>
+            <input class="form-check-input" type="checkbox" value="porn" name="reason" id="malware">
+            <label class="form-check-label" for="malware">악성코드 유포</label><br>
+            <input class="form-check-input" type="checkbox" value="porn" name="reason" id="fish">
+            <label class="form-check-label" for="fish">낚시성</label><br>
+            <input class="form-check-input" type="checkbox" value="porn" name="reason" id="etc">
+            <label class="form-check-label" for="etc">해당 외의 사항</label><br>
+        </div>
+        <div>
+            <textarea id="reasonnote" name="note" placeholder="구체적인 사유를 적으신다면, 더욱 더 쉽게 처리할 수 있습니다."></textarea>
+        </div>
+        <div class="btn-group" role="group" aria-label="Basic example">
+            <button type="button" class="btn btn-danger" onclick="reporting('yes')">신고</button>
+            <button type="button" class="btn btn-primary" onclick="reporting('no')">닫기</button>
+        </div>
+    </form>
+    <script type="text/javascript">
+        function reporting(select) {
+            switch (select) {
+                case "yes":
+                if (confirm("정말로 이 게시글을 해당 사유로 신고하시겠습니까?\n접수 시 취소가 불가능합니다.")) {
+                    alert("신고 접수가 완료되었습니다.");
+                    window.close();
+                }
+                break;
+                
+                case "no":
+                window.close();
+                break;
+            }
+        }
+    </script>
+</body>
+</html>
