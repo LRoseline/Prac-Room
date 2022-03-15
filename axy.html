@@ -4,16 +4,10 @@
         <title>PutMapping 가져오기</title>
 		<script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>    </head>
     <body>
-        <div>
-            <input type="text" id="num-area" placeholder="멤버 번호" />
-        </div>
-        <div>
-            <textarea name="" id="output" cols="40" rows="10"></textarea>
-        </div>
-        <button id="get-one">0번 데이터 가져오기</button>
+        <div id="axios-login"></div>
     </body>
     <script type="text/javascript">
-			axios.put('/hommy/userdetail/2').then(response => {
+			axios.put('https://tsukimorifriends.xyz/hommy/userdetail/2').then(response => {
 				console.log(response.data);
 				document.querySelector("#axios-login").innerHTML = "Welcome, "+response.data.userId;
 			});
