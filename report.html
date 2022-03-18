@@ -12,16 +12,16 @@
         <div>
             신고 접수
         </div>
-        <div class="form-check">
-            <input class="form-check-input" type="checkbox" value="porn" name="reason" id="porn">
+        <div class="form-check" id="reason">
+            <input class="form-check-input" type="checkbox" value="porn" name="porn">
             <label class="form-check-label" for="porn">음란성</label><br>
-            <input class="form-check-input" type="checkbox" value="porn" name="reason" id="bulling">
+            <input class="form-check-input" type="checkbox" value="porn" name="bulling">
             <label class="form-check-label" for="bulling">사이버폭력</label><br>
-            <input class="form-check-input" type="checkbox" value="porn" name="reason" id="malware">
+            <input class="form-check-input" type="checkbox" value="porn" name="malware">
             <label class="form-check-label" for="malware">악성코드 유포</label><br>
-            <input class="form-check-input" type="checkbox" value="porn" name="reason" id="fish">
+            <input class="form-check-input" type="checkbox" value="porn" name="fish">
             <label class="form-check-label" for="fish">낚시성</label><br>
-            <input class="form-check-input" type="checkbox" value="porn" name="reason" id="etc">
+            <input class="form-check-input" type="checkbox" value="porn" name="etc">
             <label class="form-check-label" for="etc">해당 외의 사항</label><br>
         </div>
         <div>
@@ -41,9 +41,7 @@
                     window.close();
                 }
                 break;
-                
                 case "no":
-                window.close();
                 break;
             }
         }
