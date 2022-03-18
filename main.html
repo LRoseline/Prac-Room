@@ -13,6 +13,7 @@
     <link href="/css/header.css" rel="stylesheet">
     <link href="/css/body.css" rel="stylesheet">
     <link href="/css/bottom.css" rel="stylesheet">
+    <link href="/css/brand.css" rel="stylesheet">
 </head>
 <!-- 헤더 Block 끝 -->
 <body>
@@ -151,6 +152,23 @@
                     </tr>
                 </tbody>
             </table>
+            <div class="searchbox row" th:fragment="searchbox">
+                <div class="searchtype">
+                    <select id="searchtype" class="form-control">
+                        <option value="tcw" th:selected="${params.searchType} == 'tcw'">전체</option>
+                        <option value="tc" th:selected="${params.searchType} == 'tc'">제목+내용</option>
+                        <option value="t" th:selected="${params.searchType} == 't'">제목</option>
+                        <option value="c" th:selected="${params.searchType} == 'c'">내용</option>
+                        <option value="w" th:selected="${params.searchType} == 'w'">작성자</option>
+                    </select>
+                </div>
+                <div class="searchword">
+                    <input id="searchword" type="text" class="form-control" th:value="${params.searchKeyword}" />
+                </div>
+                <div class="searchstart">
+                    <button class="btn btn-outline-info" onclick="search()"><i class="bi bi-search"></i></button>
+                </div>
+            </div>
         </div>
 
         <div class="containers">
