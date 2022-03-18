@@ -35,34 +35,9 @@
     box-shadow: 0 0 0 0.2rem var(--brand-color-shade-shadow);
 }
 
-.searchbox {
+.box-search {
     margin-left: auto;
     margin-right: auto;
     margin-bottom: 4px;
-    width: 462px;
-}
-
-.searchtype {
-    width: 120px;
-}
-
-#searchword {
-    width: 300px;
-}
-
-@media (max-width: 660px){
-    .searchbox {
-        margin-left: auto;
-        margin-right: auto;
-        margin-bottom: 4px;
-        width: 95%;
-    }
-
-    .searchtype {
-        width: 120px;
-    }
-
-    .searchstart {
-        width: 42px;
-    }
+    width: 290px;
 }
