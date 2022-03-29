@@ -1,0 +1,15 @@
+@media (prefers-reduced-motion: no-preference) {
+    .freshing {
+        text-align: center;
+        animation: fresh-meat infinite 1s linear;
+    }
+}
+
+@keyframes fresh-meat {
+    from {
+        transform: rotate(0deg);
+    }
+    to {
+        transform: rotate(360deg);
+    }
+}
