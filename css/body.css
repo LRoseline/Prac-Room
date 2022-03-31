@@ -1,7 +1,5 @@
 .containers {
-	margin-left: 30px;
-    margin-right: 30px;
-    margin-top: 100px;
+    padding: 40px;
 }
 
 .tb-num {
@@ -31,8 +29,6 @@
 
 @media (max-width: 991px) {
     .containers {
-        margin-left: 20px;
-        margin-right: 20px;
-        margin-top: 60px;
+        padding: 20px;
     }
 }

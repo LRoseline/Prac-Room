@@ -1,7 +1,16 @@
+#password-btn-status {
+    text-align: left;
+}
+
 @media (prefers-reduced-motion: no-preference) {
     .freshing {
-        text-align: center;
-        animation: fresh-meat infinite 1s linear;
+        font-size: 30px;
+        width: 03%;
+        height: 3%;
+        animation-name: fresh-meat;
+        animation-duration: 4s;
+        animation-timing-function: linear;
+        animation-iteration-count: infinite;
     }
 }
 
