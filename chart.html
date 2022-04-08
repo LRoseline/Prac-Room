@@ -17,32 +17,34 @@
     <canvas id="mychart"></canvas>
     <script>
         $(document).ready(function() {
-            var chart = new Chart(document.querySelector("#mychart"), {
-                type: 'line',
-                data: {
-                    datasets: [
-                        {label: [], data: []},
-                        {label: [], data: []}
-                    ],
-                    borderWidth: 1
-                },
-            });
-
-            axios.get('http://obsapi.tsukimorifriends.xyz/OBSStudio/api/weather').then(response => {
+            
+            axios.get('/chartjson').then(response => {
                 console.log(response.data);
-                chart.destroy();
 
-                chart = new Chart(document.querySelector("#mychart"), {
+                const sa = response.data;
+
+                const weatherchat = {
+                    labels: [sa.time1hrs,sa.time2hrs,sa.time3hrs,sa.time4hrs,sa.time5hrs],
+                    datasets: [
+                                {
+                                    label: "Temp",
+                                    data: [sa.time1temp,sa.time2temp,sa.time3temp,sa.time4temp,sa.time5temp]
+                                }
+                            ]};
+
+                const chart = new Chart(document.querySelector("#mychart"), {
                     type: 'line',
-                    data: {
-                        labels: data[0].label,
-                        datasets: [
-                            {
-                                
+                    data: weatherchat,
+                    options: {
+                        responsive: true,
+                        scales: {
+                            y: {
+                                min: -20,
+                                max: 40
                             }
-                        ]
+                        }
                     }
-                })
+                });
             });
         });
     </script>
