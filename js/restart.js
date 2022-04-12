@@ -11,16 +11,16 @@ const renderFor = (num) => {
     const result = [];
 
     for (let i = 1; i <= num; i++) {
-        result.push(<li>{i}</li>);
+        result.push(<li key={i.toString()}>{i}</li>);
     }
 
     return result;
 }
 
 const renderResult = (
-    <div>
+    <ul>
         {renderFor(10)}
-    </div>
+    </ul>
 );
 
 const testA = document.getElementById('testA');
