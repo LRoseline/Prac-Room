@@ -23,16 +23,27 @@
         <button id="btn-address" class="btn btn-outline-primary">주소 찾기</button>
         <div class="form-group">
             <label for="address">주소</label>
-            <input type="text" class="form-control" id="address">
+            <div id="address-create">
+                <textarea class="form-control"></textarea>
+            </div>
         </div>
     </main>
-    <script>
+    <script type="text/babel">
         const button_addr = document.querySelector("#btn-address");
+        const Address_prop = document.querySelector("#address-create");
 
         button_addr.addEventListener("click", function () {
             new daum.Postcode({
-                oncomplete: function(data) {
+                oncomplete: function(d) {
+                    const types = (
+                        <textarea class="form-control">
+                            <span>{d.address}</span>
+                            <span>대상자</span>
+                            <span>{d.zonecode}</span>
+                        </textarea>
+                    );
 
+                    ReactDOM.render(types, Address_prop);
                 }
             }).open();
         });
