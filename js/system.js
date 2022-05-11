@@ -16,10 +16,25 @@ function NavSet(widthy, hd) {
 function spread(name) {
     var status = document.querySelector(name).style.display
     if (status != "block") {
-        document.querySelector(name+"-static").innerHTML = "&and;";
+        document.querySelector(name+"-static").innerHTML = '<i style="font-size: 16px;" class="bi bi-caret-up-fill"></i>';
         document.querySelector(name).style.display = "block";
     } else {
-        document.querySelector(name+"-static").innerHTML = "&or;";
+        document.querySelector(name+"-static").innerHTML = '<i style="font-size: 16px;" class="bi bi-caret-down-fill"></i>';
         document.querySelector(name).style.display = "none";
+    }
+}
+
+function DustRate(grade) {
+    if (grade == 1) {
+        return "좋음";
+    }
+    if (grade == 2) {
+        return "보통";
+    }
+    if (grade == 3) {
+        return "나쁨";
+    }
+    if (grade == 4) {
+        return "매우 나쁨";
     }
 }
