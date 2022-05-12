@@ -88,7 +88,7 @@ function chartWater(dat) {
                     }
                 ]};
 
-    const chart = new Chart(document.querySelector("#waterchat"), {
+    this.chart = new Chart(document.querySelector("#waterchat"), {
         type: 'line',
         data: weatherchat,
         options: {
