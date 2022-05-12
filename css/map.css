@@ -1,7 +1,7 @@
 :root {
     --brand-color-blue: #0b4499;
-    --brand-color-green: rgb(13,104,38);
-    --brand-color-orange: rgb(255,120,0);
+    --brand-color-green: #0d6826;
+    --brand-color-orange: hsl(28, 100%, 50%);
     --brand-color-gray: rgb(137,135,136);
     --brand-color-gray-trans: rgba(137,135,136,0.9);
 }
