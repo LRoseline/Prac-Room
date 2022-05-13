@@ -44,51 +44,32 @@ function cmdr (station) {
 }
 
 function chartWater(dat) {
+    let fordate = [];
+    let forwlevel = [];
+    let forrate = [];
+    for (let i = 0; i < 8; i++) {
+        fordate.push(daystring(dat.daily[i].date));
+        forwlevel.push(dat.daily[i].wlevel);
+        forrate.push(dat.daily[i].rate);
+    }
     const weatherchat = {
-        labels: [
-            daystring(dat.daily[0].date),
-            daystring(dat.daily[1].date),
-            daystring(dat.daily[2].date),
-            daystring(dat.daily[3].date),
-            daystring(dat.daily[4].date),
-            daystring(dat.daily[5].date),
-            daystring(dat.daily[6].date),
-            daystring(dat.daily[7].date)
-        ],
+        labels: fordate,
         datasets: [
                     {
                         label: "저수지 수위",
-                        data: [
-                            dat.daily[0].wlevel,
-                            dat.daily[1].wlevel,
-                            dat.daily[2].wlevel,
-                            dat.daily[3].wlevel,
-                            dat.daily[4].wlevel,
-                            dat.daily[5].wlevel,
-                            dat.daily[6].wlevel,
-                            dat.daily[7].wlevel
-                        ],
+                        data: forwlevel,
                         borderColor: "#ff7800",
                         backgroundColor: "#ff7800",
                     },
                     {
                         label: "저수율",
-                        data: [
-                            dat.daily[0].rate,
-                            dat.daily[1].rate,
-                            dat.daily[2].rate,
-                            dat.daily[3].rate,
-                            dat.daily[4].rate,
-                            dat.daily[5].rate,
-                            dat.daily[6].rate,
-                            dat.daily[7].rate
-                        ],
+                        data: forrate,
                         borderColor: "#0d6826",
                         backgroundColor: "#0d6826",
                     }
                 ]};
 
-    this.chart = new Chart(document.querySelector("#waterchat"), {
+    const chart = new Chart(document.querySelector("#waterchat"), {
         type: 'line',
         data: weatherchat,
         options: {
