@@ -1,0 +1,10 @@
+:root {
+    --brand-color-blue: #0b4499;
+    --brand-color-green: #0d6826;
+    --brand-color-orange: hsl(28, 100%, 50%);
+    --brand-color-gray: rgb(137,135,136);
+}
+
+.bg-orange {
+    background-color: var(--brand-color-orange);
+}

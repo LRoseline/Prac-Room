@@ -54,30 +54,31 @@ function chartWater(dat) {
     }
     const weatherchat = {
         labels: fordate,
-        datasets: [
-                    {
-                        label: "저수지 수위",
-                        data: forwlevel,
-                        borderColor: "#ff7800",
-                        backgroundColor: "#ff7800",
-                    },
-                    {
-                        label: "저수율",
-                        data: forrate,
-                        borderColor: "#0d6826",
-                        backgroundColor: "#0d6826",
-                    }
-                ]};
-
-    const chart = new Chart(document.querySelector("#waterchat"), {
+        datasets:
+        [
+            {
+                label: "저수지 수위",
+                data: forwlevel,
+                borderColor: "#ff7800",
+                backgroundColor: "#ff7800",
+            },
+            {
+                label: "저수율",
+                data: forrate,
+                borderColor: "#0d6826",
+                backgroundColor: "#0d6826",
+            }
+        ]
+    };
+    
+    new Chart("waterchat", {
         type: 'line',
         data: weatherchat,
         options: {
             responsive: true,
             scales: {
                 y: {
-                    min: 0,
-                    max: 100
+                    min: 0
                 }
             }
         }
