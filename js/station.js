@@ -30,10 +30,15 @@ function cmdr (station) {
                     }, 1000);
 
                     map.flyTo([dex.lat+0.002, dex.lon], 16);
-                    this.bindPopup ("<h6>"+dex.resername+"저수지</h6>"+
+                    this.bindPopup (
+                                    "<h6>"+dex.resername+"저수지</h6>"+
+                                    "<div style='display: flex;'><div style='width: 50%; padding: 2px;'>"+
                                     "<b>전일정보</b> - "+datestring(t.data.daily[6].date)+"<br>저수율 : "+t.data.daily[6].rate+"%<br>저수지 수위 : "+t.data.daily[6].wlevel+"<br>"+
                                     "<br><b>금일정보</b> - "+datestring(t.data.daily[7].date)+"<br>저수율 : "+t.data.daily[7].rate+"%<br>저수지 수위 : "+t.data.daily[7].wlevel+"<br>"+
-                                    '<canvas id="waterchat">Chat Loading...</canvas>'
+                                    '</div>'+
+                                    "<div style='width: 50%; padding: 2px;'>Hello</div></div>"+
+                                    '<canvas width="400px" id="waterchat"></canvas><br>'+
+                                    '<canvas width="400px" id="ratechat"></canvas>'
                     , {
                         maxWidth: 400
                     }).openPopup();
@@ -47,12 +52,17 @@ function chartWater(dat) {
     let fordate = [];
     let forwlevel = [];
     let forrate = [];
+    let formax = [];
+    let wlevelmin = "";
     for (let i = 0; i < 8; i++) {
         fordate.push(daystring(dat.daily[i].date));
+        formax.push(dat.full);
         forwlevel.push(dat.daily[i].wlevel);
         forrate.push(dat.daily[i].rate);
+        wlevelmin = Math.min(dat.daily[i].wlevel);
     }
-    const weatherchat = {
+    
+    const levelchat = {
         labels: fordate,
         datasets:
         [
@@ -61,26 +71,42 @@ function chartWater(dat) {
                 data: forwlevel,
                 borderColor: "#ff7800",
                 backgroundColor: "#ff7800",
-            },
+                pointStyle: 'circle',
+                pointRadius: 5,
+                pointHoverRadius: 10
+            }
+        ]
+    };
+
+    const ratechart = {
+        labels: fordate,
+        datasets:
+        [
             {
                 label: "저수율",
                 data: forrate,
                 borderColor: "#0d6826",
                 backgroundColor: "#0d6826",
+                pointStyle: 'circle',
+                pointRadius: 5,
+                pointHoverRadius: 10
             }
         ]
-    };
+    }
     
     new Chart("waterchat", {
         type: 'line',
-        data: weatherchat,
+        data: levelchat,
         options: {
-            responsive: true,
-            scales: {
-                y: {
-                    min: 0
-                }
-            }
+            responsive: true
+        }
+    });
+
+    new Chart("ratechat", {
+        type: 'line',
+        data: ratechart,
+        options: {
+            responsive: true
         }
     });
 }
