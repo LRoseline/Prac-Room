@@ -28,74 +28,37 @@
         .container {
             margin-top: 50px;
         }
+
+        #druid {
+            resize: none;
+            width: 100%;
+            height: 120px;
+        }
     </style>
 </head>
 <body>
     <main class="container">
         <div class="d-flex">
-            <input id="naming" type="text" clsas="form-control" placeholder="수령자 이름" />
             <button id="btn-address" type="button" class="btn btn-outline-primary">주소 찾기</button>
+            <button type="button" class="btn btn-outline-info" onclick="copyToClickBoard()">복사하기</button>
         </div>
         <div class="form-group">
-            <textarea class="form-control" id="summernote"></textarea>
-            <div class="form-control" id="addr-auto"></div>
+            <textarea class="form-control" id="druid" readonly></textarea>
         </div>
     </main>
-    <script type="text/babel">
-        $('#summernote').summernote({
-            tabsize: 2,
-            height: 100
-        });
-
+    <script>
         const button_addr = document.querySelector("#btn-address");
-        const Address_prop = document.querySelector(".note-editable");
-        // const Address_prop = document.querySelector("#addr-auto");
-
-        const rightaddr = {textAlign: "right", fontFamily: "이순신 돋움체 M"};
-        const pstyle = {lineHeight: "120%", wordBreak: "keep-all"};
-
-        const cen1 = {letterSpacing: "-0.8pt", fontSize: "16pt"};
-        const cen2 = {letterSpacing: "-0.4pt", fontSize: "24.0pt"};
-        const cen3 = {letterSpacing: "-0.4pt", fontSize: "24.0pt"};
-
-        var name_value = document.querySelector("#naming").value;
+        const Address_prop = document.querySelector("#druid");
 
         button_addr.addEventListener("click", function () {
             new daum.Postcode({
                 oncomplete: function(d) {
-                    // const types = (
-                    //     <div style={rightaddr}>
-                    //         <span style={cen1}>{d.address}</span><br />
-                    //         <span style={cen2}>이름작성 바랍니다.</span><br />
-                    //         <span style={cen3}>{d.zonecode}</span>
-                    //     </div>
-                    // );
+                    const types = d.address + "\n\n" + d.zonecode;
 
-                    const c1 = {lineHeight:'120%', textAlign:'right',wordBreak:'keepAll',msoPagination:'none',textAutospace:'none',msoPaddingAlt:'0pt 0pt 0pt 0pt'};
-                    const c2 = {fontFamily:'이순신 돋움체 M',msoFareastFontFamily:'이순신 돋움체 M',letterSpacing:'-0.8pt',fontSize:'16.0pt'};
-                    const c3 = {lineHeight:'120%',textAlign:'right',wordBreak:'keepAll',msoPagination:'none',textAutospace:'none',msoPaddingAlt:'0pt 0pt 0pt 0pt'};
-                    const c4 = {fontFamily:'이순신 돋움체 M',msoFareastFontFamily:'이순신 돋움체 M',letterSpacing:'-0.4pt',fontSize:'24.0pt'};
-                    const c5 = {lineHeight:'120%',textAlign:'right',wordBreak:'keepAll',msoPagination:'none',textAutospace:'none',msoPaddingAlt:'0pt 0pt 0pt 0pt'};
-                    const c6 = {msoFareastFontFamily:'이순신 돋움체 M',fontFamily:'이순신 돋움체 M',msoAsciiFontFamily:'이순신 돋움체 M',msoFontWidth:'100%',letterSpacing:'-0.4pt',msoTextRaise:'0pt',fontSize:'24.0pt'};
-
-                    const types =(
-                        <div>
-                            <p className="0" style={c1}>
-                                <span style={c2}>{d.address}</span>
-                            </p>
-                            <p className="0" style={c3}>
-                                <span style={c4}>이름을 작성해주세요.</span>
-                            </p>
-                            <p></p>
-                            <div id="hwpEditorBoardContent" className="hwp_editor_board_content" dataHjsonver="1.0" dataJsonlen="8163"></div>
-                            <p></p>
-                            <p className="0" style={c5}>
-                                <span lang="EN-US" style={c6}>{d.zonecode}</span>
-                            </p>
-                        </div>
-                    );
-
-                    ReactDOM.render(types, Address_prop);
+                    Address_prop.innerHTML = types;
+                    setTimeout(() => {
+                        document.querySelector("#druid").select();
+                    }, 10);
                 }
             }).open();
         });
