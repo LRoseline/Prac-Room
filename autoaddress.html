@@ -48,20 +48,34 @@
     </main>
     <script>
         const button_addr = document.querySelector("#btn-address");
-        const Address_prop = document.querySelector("#druid");
+        
 
         button_addr.addEventListener("click", function () {
+            const Address_prop = document.querySelector("#druid");
             new daum.Postcode({
                 oncomplete: function(d) {
                     const types = d.address + "\n\n" + d.zonecode;
 
-                    Address_prop.innerHTML = types;
+                    Address_prop.value = types;
                     setTimeout(() => {
-                        document.querySelector("#druid").select();
-                    }, 10);
+                        Address_prop.select();
+                        Address_prop.setSelectionRange(0, 99999);
+                        document.execCommand('copy');
+                        // document.querySelector("#druid").setSelectionRange(0, 99999);
+                    }, 1000);
+
+                    copyToClickBoard();
                 }
             }).open();
         });
+
+        function copyToClickBoard() {
+            const Address_prop = document.querySelector("#druid");
+            Address_prop.select();
+            Address_prop.setSelectionRange(0, 99999);
+            document.execCommand('copy');
+            // navigator.clipboard.writeText(Address_prop.value);
+        }
     </script>
 </body>
 </html>
