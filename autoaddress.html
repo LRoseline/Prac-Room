@@ -14,15 +14,6 @@
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css">
     <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js"></script>
     
-    <!-- include summernote css/js -->
-    <link href="https://cdn.jsdelivr.net/npm/summernote@0.8.18/dist/summernote-bs4.min.css" rel="stylesheet">
-    <script src="https://cdn.jsdelivr.net/npm/summernote@0.8.18/dist/summernote-bs4.min.js"></script>
-    <script src="https://cdn.jsdelivr.net/npm/summernote@0.8.18/dist/lang/summernote-ko-KR.min.js"></script>
-    
-    <script crossorigin src="https://unpkg.com/react@17/umd/react.development.js"></script>
-    <script crossorigin src="https://unpkg.com/react-dom@17/umd/react-dom.development.js"></script>
-    <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
-    <script src="https://npmcdn.com/babel-core@5.8.38/browser.min.js"></script>
     <script src="https://t1.daumcdn.net/mapjsapi/bundle/postcode/prod/postcode.v2.js"></script>
     <style>
         .container {
@@ -38,6 +29,9 @@
 </head>
 <body>
     <main class="container">
+        <label class="checkbox-inline">
+            <input type="checkbox" id="isAddress" value="RoadValue"> 도로명 주소로 표시하기
+        </label>
         <div class="d-flex">
             <button id="btn-address" type="button" class="btn btn-outline-primary">주소 찾기</button>
             <button type="button" class="btn btn-outline-info" onclick="copyToClickBoard()">복사하기</button>
@@ -45,26 +39,49 @@
         <div class="form-group">
             <textarea class="form-control" id="druid" readonly></textarea>
         </div>
+        <h6>사용방법</h6>
+        <ul>
+            <li>주소 찾기로 들어가서 원하는 주소를 입력한 다음 선택하세요.</li>
+            <li>주소가 나오면 자동으로 텍스트가 선택되며, Ctrl+C나 복사하기 버튼으로 주소를 복사하면 됩니다.</li>
+        </ul>
     </main>
     <script>
         const button_addr = document.querySelector("#btn-address");
-        
+        const Addresscheck = document.querySelector("#isAddress");
 
         button_addr.addEventListener("click", function () {
             const Address_prop = document.querySelector("#druid");
             new daum.Postcode({
                 oncomplete: function(d) {
-                    const types = d.address + "\n\n" + d.zonecode;
+                    var addtype = "";
+                    if (Addresscheck.checked != true) {
+                        addtype = d.address;
+                    } else {
+                        addtype = d.roadAddress;
+                    }
 
+                    var isNamedBuild = " (" + d.buildingName + ")";
+
+                    if (isNamedBuild == " ()") {
+                        isNamedBuild = ""
+                    }
+
+                    const types = addtype + isNamedBuild + "\n" + d.zonecode;
+                    
                     Address_prop.value = types;
                     setTimeout(() => {
                         Address_prop.select();
                         Address_prop.setSelectionRange(0, 99999);
-                        document.execCommand('copy');
                         // document.querySelector("#druid").setSelectionRange(0, 99999);
                     }, 10);
 
-                    copyToClickBoard();
+                    setTimeout(() => {
+                        if (d === 'COMPLETE_CLOSE') {
+                            document.execCommand('copy');
+                        } else {
+                            document.execCommand('copy');
+                        }
+                    }, 20);
                 }
             }).open();
         });
