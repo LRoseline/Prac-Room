@@ -30,9 +30,6 @@
 <body>
     <main class="container">
         <label class="checkbox-inline">
-            <input type="checkbox" id="isMail" value="PersonValue"> 성함 작성공간 추가
-        </label>
-        <label class="checkbox-inline">
             <input type="checkbox" id="isAddress" value="RoadValue"> 도로명 주소로 표시하기
         </label>
         <div class="d-flex">
@@ -64,17 +61,12 @@
                     }
 
                     var isNamedBuild = " (" + d.buildingName + ")";
-                    var nameTag = "";
 
                     if (isNamedBuild == " ()") {
                         isNamedBuild = ""
                     }
 
-                    if (isMail.cheched == true) {
-                        nameTag = "\n";
-                    }
-
-                    const types = addtype + isNamedBuild + "\n" + nameTag + d.zonecode;
+                    const types = addtype + isNamedBuild + "\n" + d.zonecode;
                     
                     Address_prop.value = types;
                     setTimeout(() => {
